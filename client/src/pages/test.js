@@ -5,9 +5,13 @@ class Test extends React.Component{
   componentDidMount() {
     console.log(this.props)
   }
+  file = () => {
+    this.props.readFileAsync()
+  }
   render() {
+    console.log(this.props);
     return <div>
-      <button onClick={() => {this.props.readFileAsync()}}>读取文件</button>
+      <button onClick={this.file}>读取文件</button>
       <div>{this.props.fileContent.name}</div>
     </div>
   }
