@@ -17,6 +17,7 @@
         "regenerator": true,
         "moduleName": "babel-runtime"
       }
-    ]
+    ],
+    ["import", { "libraryName": "antd-mobile", "style": true }]
   ]
 }

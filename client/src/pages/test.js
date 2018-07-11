@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button } from 'antd-mobile'
 
 class Test extends React.Component{
   componentDidMount() {
@@ -9,10 +10,12 @@ class Test extends React.Component{
     this.props.readFileAsync()
   }
   render() {
-    console.log(this.props);
+
     return <div>
       <button onClick={this.file}>读取文件</button>
-      <div>{this.props.fileContent.name}</div>
+      <div>
+        <Button type="primary">按钮</Button>
+      </div>
     </div>
   }
 }
