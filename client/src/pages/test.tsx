@@ -1,8 +1,15 @@
-import React from 'react'
+import  * as React from 'react'
 import { connect } from 'react-redux'
 import { Button } from 'antd-mobile'
+import './test.less'
 
-class Test extends React.Component{
+interface TestProps {
+  readFileAsync: any
+}
+interface TestState {
+
+}
+class Test extends React.Component<TestProps, TestState>{
   componentDidMount() {
     console.log(this.props)
   }
@@ -12,22 +19,24 @@ class Test extends React.Component{
   render() {
 
     return <div>
-      <button onClick={this.file}>读取文件</button>
+      <Button type="primary">读取文件</Button>
       <div>
-        <Button type="primary">按钮</Button>
+        <div className="a">
+
+        </div>
       </div>
     </div>
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state: { fileContent: {} }) {
   console.log(state);
-  const { fileContent } = state
+  const { fileContent } = state || { fileContent: {} }
   return {
     fileContent
   }
 }
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch: any) {
   return {
     readFileAsync: () => dispatch({
       type: 'READ_FILE'

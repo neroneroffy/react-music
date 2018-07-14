@@ -1,12 +1,17 @@
 const path = require('path')
 const webpack = require('webpack')
+const tsImportPluginFactory = require('ts-import-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const theme = require('../package.json').theme
 const isDev = process.env.NODE_ENV === 'development'
 const config = {
-  entry: path.join(__dirname, '../src/index.js'),
+  entry: path.join(__dirname, '../src/index.tsx'),
   output: {
     path: path.join(__dirname, '../build'),
     filename: '[hash:8]-[name].js',
+  },
+  resolve: {
+    extensions: [ '.ts', '.tsx', '.js'  ]
   },
   module: {
     rules: [
@@ -15,7 +20,31 @@ const config = {
         loader: 'babel-loader',
         exclude: [
           path.join(__dirname, '../node_modules'),
-        ]
+        ],
+
+      },
+      {
+        test: /\.(tsx|.ts)$/,
+        use: [
+          { loader: 'babel-loader' },
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [ tsImportPluginFactory({
+                  libraryDirectory: 'es',
+                  libraryName: 'antd-mobile',
+                  style: true,
+                }) ]
+              }),
+              compilerOptions: {
+                module: 'es2015'
+              }
+            },
+          }
+        ],
+        exclude: [ path.join(__dirname, '../node_modules') ]
       },
       {
         test: /\.less$/,
@@ -24,6 +53,9 @@ const config = {
           { loader: 'css-loader' },
           {
             loader: 'less-loader',
+            options: {
+              modifyVars: theme
+            }
           }
         ]
       },
@@ -62,7 +94,7 @@ if (isDev) {
   config.entry = {
     app :[
       "react-hot-loader/patch",
-      path.join(__dirname, '../src/index.js'),
+      path.join(__dirname, '../src/index.tsx'),
     ]
   }
   config.plugins.push(
