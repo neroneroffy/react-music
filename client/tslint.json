@@ -4,6 +4,18 @@
         "tslint:recommended"
     ],
     "jsRules": {},
-    "rules": {},
+    "rules": {
+      "no-empty": true,
+      "semicolon": false,
+      "indent":[true, "spaces", 2],
+      "linebreak-style":[true,"CR/LF"],
+      "max-classes-per-file":[true,1],
+      "max-line-length":[true,100],
+      "quotemark": [true, "single"],
+      "ordered-imports": false,
+      "interface-name": false,
+      "member-access": false,
+      "object-literal-sort-keys": false
+    },
     "rulesDirectory": []
 }

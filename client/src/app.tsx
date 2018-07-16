@@ -2,11 +2,11 @@ import React from 'react'
 import './app.less'
 import store from './store'
 import { Provider } from 'react-redux'
-import Test from './pages/test.tsx'
-class App extends React.Component{
-  render () {
+import Test from './pages/test'
+class App extends React.Component {
+  render() {
     return <Provider store={store}>
-      <div className="app">
+      <div className='app'>
         <Test/>
       </div>
     </Provider>

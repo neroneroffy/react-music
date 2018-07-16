@@ -1,9 +1,8 @@
 import * as Actions from '../actions/flie'
 const initialState = {
-  name: ''
+  name: '',
 }
-export default function fileContent(state = initialState, action) {
-  console.log(action.payload)
+export default function fileContent(state = initialState, action: All) {
   switch (action.type) {
     case Actions.READ_FILE:
       return {

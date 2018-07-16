@@ -24,7 +24,7 @@ const config = {
 
       },
       {
-        test: /\.(tsx|.ts)$/,
+        test: /\.(tsx|ts)$/,
         use: [
           { loader: 'babel-loader' },
           {
@@ -48,9 +48,24 @@ const config = {
       },
       {
         test: /\.less$/,
+        include: [ path.join(__dirname, '../node_modules/antd-mobile') ],
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: theme
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        exclude: [ path.join(__dirname, '../node_modules/antd-mobile') ],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader?modules&localIdentName=[name]-[hash:base64:5]' },
           {
             loader: 'less-loader',
             options: {

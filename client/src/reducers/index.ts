@@ -2,6 +2,6 @@ import { combineReducers } from 'redux'
 import fileContent from './file'
 
 const rootReducer = combineReducers({
-  fileContent
+  fileContent,
 })
 export default rootReducer

@@ -8,13 +8,16 @@
     "dist": "cross-env   NODE_ENV=production webpack --config configs/webpack.config.js --mode production",
     "build": "npm run clear && npm run dist",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.js --mode development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tslint": "tslint --project . src/**/*.ts src/**/*.tsx"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^16.4.6",
     "@types/react-dom": "^16.0.6",
+    "@types/react-redux": "^6.0.4",
+    "@types/react-router": "^4.0.28",
     "autoprefixer": "^8.6.5",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
@@ -37,6 +40,7 @@
     "style-loader": "^0.21.0",
     "ts-import-plugin": "^1.5.4",
     "ts-loader": "^4.4.2",
+    "tslint": "^5.10.0",
     "typescript": "^2.9.2",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
