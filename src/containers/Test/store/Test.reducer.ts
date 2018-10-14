@@ -1,8 +1,8 @@
-import * as Actions from '../actions/flie'
+import * as Actions from './Test.action'
 const initialState = {
   name: '',
 }
-export default function fileContent(state = initialState, action: All) {
+export default function fileContent(state = initialState, action: any) {
   switch (action.type) {
     case Actions.READ_FILE:
       return {

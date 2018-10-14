@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const theme = require('../package.json').theme
 const isDev = process.env.NODE_ENV === 'development'
 const config = {
-  entry: path.join(__dirname, '../src/index.tsx'),
+  entry: path.join(__dirname, '../src/client/index.tsx'),
   output: {
     path: path.join(__dirname, '../build'),
     filename: '[hash:8]-[name].js',
@@ -109,7 +109,7 @@ if (isDev) {
   config.entry = {
     app :[
       "react-hot-loader/patch",
-      path.join(__dirname, '../src/index.tsx'),
+      path.join(__dirname, '../src/client/index.tsx'),
     ]
   }
   config.plugins.push(

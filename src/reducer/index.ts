@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import fileContent from './file'
+import fileContent from '../containers/Test/store/Test.reducer'
 
 const rootReducer = combineReducers({
   fileContent,
