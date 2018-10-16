@@ -5,6 +5,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const theme = require('../package.json').theme
 const isDev = process.env.NODE_ENV === 'development'
 const config = {
+  entry: path.join(__dirname, '../src/client/index.tsx'),
+  output: {
+    path: path.join(__dirname, '../build'),
+    filename: '[hash:8]-[name].js',
+  },
   resolve: {
     extensions: [ '.ts', '.tsx', '.js'  ]
   },
@@ -41,6 +46,42 @@ const config = {
         ],
         exclude: [ path.join(__dirname, '../node_modules') ]
       },
+      {
+        test: /\.less$/,
+        include: [ path.join(__dirname, '../node_modules/antd-mobile') ],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: theme
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        exclude: [ path.join(__dirname, '../node_modules/antd-mobile') ],
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader?modules&localIdentName=[name]-[hash:base64:5]' },
+          {
+            loader: 'less-loader',
+            options: {
+              modifyVars: theme
+            }
+          }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+
     ]
   },
   plugins: [

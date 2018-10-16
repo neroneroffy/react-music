@@ -7,7 +7,11 @@
     "clear": "rimraf build",
     "dist": "cross-env   NODE_ENV=production webpack --config configs/webpack.config.js --mode production",
     "build": "npm run clear && npm run dist",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.js --mode development",
+    "dev-temp": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.js --mode development",
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon --watch build --exec node \"./build/server.js\"",
+    "dev:build:server": "webpack --config configs/webpack.config.server.js --watch",
+    "dev:build:client": "webpack --config configs/webpack.config.client.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "tslint": "tslint --project . src/**/*.ts src/**/*.tsx"
   },
@@ -31,8 +35,10 @@
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "isomorphic-style-loader": "^4.0.0",
     "less": "^3.5.3",
     "less-loader": "^4.1.0",
+    "nodemon": "^1.18.4",
     "postcss-flexbugs-fixes": "^3.3.1",
     "postcss-loader": "^2.1.6",
     "react-hot-loader": "^4.3.3",
@@ -44,18 +50,21 @@
     "typescript": "^2.9.2",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "antd-mobile": "^2.2.1",
     "axios": "^0.18.0",
+    "express": "^4.16.4",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
+    "react-router-config": "^4.4.0-beta.1",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "redux-saga": "^0.16.0",
-    "webpack-merge": "^4.1.3"
+    "redux-saga": "^0.16.0"
   },
   "theme": {
     "brand-primary": "#f68b0e",
