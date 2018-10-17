@@ -2,7 +2,6 @@ import React from 'react'
 import './app.less'
 import store from '../store'
 import { Provider } from 'react-redux'
-import Test from '../containers/Test/test'
 import { renderRoutes } from 'react-router-config'
 import Header from '../components/Header/index'
 
