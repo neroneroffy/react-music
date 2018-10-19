@@ -1,5 +1,4 @@
 import React from 'react'
-import './app.less'
 import store from '../store'
 import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'

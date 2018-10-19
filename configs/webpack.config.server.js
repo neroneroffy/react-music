@@ -30,7 +30,7 @@ const serverConfig = {
         test: /\.less$/,
         exclude: [ path.join(__dirname, '../node_modules/antd-mobile') ],
         use: [
-          { loader: 'style-loader' },
+          { loader: 'isomorphic-style-loader' },
           { loader: 'css-loader?modules&localIdentName=[name]-[hash:base64:5]' },
           {
             loader: 'less-loader',

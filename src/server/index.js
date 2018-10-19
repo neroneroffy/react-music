@@ -1,9 +1,10 @@
 import express from 'express'
-
+import routes from '../routes'
+import serverRender from './render'
 const app = express()
 
 app.get("*", (req, res) => {
-  res.send('hello')
+  res.send(serverRender(req, routes))
 })
 
 app.listen(3000, () => {

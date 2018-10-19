@@ -6,7 +6,7 @@ import rootSaga from './containers/Test/store/index'
 const sagaMiddleware = createSagaMiddleware()
 const middlewares = compose(
   applyMiddleware(sagaMiddleware),
-  window.devToolsExtension ? window.devToolsExtension() : f=>f
+  // window.devToolsExtension ? window.devToolsExtension() : f=>f
 )
 const store = createStore(rootReducers,middlewares)
 sagaMiddleware.run(rootSaga)
