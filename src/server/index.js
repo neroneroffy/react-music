@@ -3,6 +3,7 @@ import routes from '../routes'
 import serverRender from './render'
 const app = express()
 
+app.use(express.static('public'))
 app.get("*", (req, res) => {
   res.send(serverRender(req, routes))
 })

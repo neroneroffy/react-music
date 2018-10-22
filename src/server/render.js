@@ -13,11 +13,14 @@ const serverRender = (req, routes) => {
     ))
   return `<html>
             <head>
+                <meta charset="UTF-8">
                 <title>音乐</title>
+                <link rel="stylesheet" href="/main.css">
             </head>
             <body>
                 <div id="root">${content}</div>
             </body>
+            <script src="/client.js"></script>
           </html>`
 }
 

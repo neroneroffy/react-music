@@ -43,14 +43,14 @@ const config = {
       },
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'music',
-      filename: path.join(__dirname, '../build/index.html'),
-      template: path.join(__dirname, '../public/index.html'),
-      inject: true,
-    }),
-  ]
+  // plugins: [
+  //   new HtmlWebpackPlugin({
+  //     title: 'music',
+  //     filename: path.join(__dirname, '../build/index.html'),
+  //     template: path.join(__dirname, '../public/index.html'),
+  //     inject: true,
+  //   }),
+  // ]
 }
 if (isDev) {
   config.devServer = {

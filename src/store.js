@@ -4,9 +4,11 @@ import rootReducers from './reducer/index'
 import rootSaga from './containers/Test/store/index'
 
 const sagaMiddleware = createSagaMiddleware()
+
+const enhancer = typeof window === 'object' ? window.devToolsExtension() : f=>f
 const middlewares = compose(
   applyMiddleware(sagaMiddleware),
-  // window.devToolsExtension ? window.devToolsExtension() : f=>f
+  enhancer
 )
 const store = createStore(rootReducers,middlewares)
 sagaMiddleware.run(rootSaga)

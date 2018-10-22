@@ -14,7 +14,6 @@ class Test extends React.Component<TestProps> {
     this.props.readFileAsync()
   }
   render() {
-    console.log(this.props);
     return <div>
       <Button type='primary' onClick={this.file}>读取文件</Button>
       <div>
