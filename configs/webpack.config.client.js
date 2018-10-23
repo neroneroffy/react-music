@@ -7,7 +7,8 @@ const clientConfig = {
   entry: path.join(__dirname, '../src/client/index.tsx'),
   output: {
     path: path.join(__dirname, '../public'),
-    filename: 'client.js',
+    filename: '[name].client.js',
+    chunkFilename: "[name].js",
   },
   resolve: {
     extensions: [ '.ts', '.tsx', '.js'  ]
@@ -60,12 +61,27 @@ const clientConfig = {
       },
     ]
   },
+  optimization: {
+    runtimeChunk: {
+      name: "manifest"
+    },
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          priority: -20,
+          chunks: "all"
+        }
+      }
+    }
+  },
   plugins: [
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
       filename: "[name].css",
-      chunkFilename: "[id].css",
+      chunkFilename: "style.[id].css",
       allChunks: true
     })
   ],
