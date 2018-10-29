@@ -1,28 +1,32 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-// import { AppContainer } from 'react-hot-loader'
 const root = document.getElementById('root')
-// import store from '../store'
-import routes from '../routes'
+import {AppContainer} from 'react-hot-loader'
 import { Provider } from 'react-redux'
-import { renderRoutes } from 'react-router-config'
 import { BrowserRouter } from 'react-router-dom'
 import store from '../store';
+import App from '../containers/app'
 
-// if (module.hot){
-//   module.hot.accept(() => {
-//     ReactDOM.render(
-//       <AppContainer>
-//         <App />
-//       </AppContainer>
-//       , root)
-//   })
-// }
-const RootApp = () => <Provider store={store}>
-    <BrowserRouter>
-        { renderRoutes(routes) }
-    </BrowserRouter>
-</Provider>
-ReactDOM.hydrate(
-    <RootApp/>
-  , root)
+if (module.hot) {
+    module.hot.accept('../containers/app.tsx', () => {
+        const NextApp = require('../containers/app.tsx').default
+        ReactDOM.render(
+            <AppContainer>
+                <Provider store={store}>
+                    <BrowserRouter>
+                        <NextApp/>
+                    </BrowserRouter>
+                </Provider>
+            </AppContainer>, root)
+    })
+}
+
+ReactDOM.render(
+    <AppContainer>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </Provider>
+    </AppContainer>
+    , root)

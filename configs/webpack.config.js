@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const tsImportPluginFactory = require('ts-import-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const theme = require('../package.json').theme
-const isDev = process.env.NODE_ENV === 'development'
+
 const config = {
   resolve: {
     extensions: [ '.ts', '.tsx', '.js'  ]
@@ -52,6 +52,7 @@ const config = {
   //   }),
   // ]
 }
+/*
 if (isDev) {
   config.devServer = {
     host: '0.0.0.0',
@@ -75,4 +76,5 @@ if (isDev) {
     new webpack.HotModuleReplacementPlugin()
   )
 }
+*/
 module.exports = config

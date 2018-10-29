@@ -14,7 +14,7 @@ class Header extends React.Component<HeaderProps> {
     return (<div>
         <p>
             <Link to='/'>首页</Link>
-            <Link to='/test'>测试</Link>
+            <Link to='/test'>测sdadas</Link>
         </p>
     </div>)
   }
