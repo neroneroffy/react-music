@@ -21,15 +21,7 @@ const clientConfig = {
     rules: []
   },
   devtool: "#eval-source-map",
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: 'music',
-      filename: path.join(__dirname, '../public/index.html'),
-      template: path.join(__dirname, '../public/index.html'),
-      inject: true,
-    }),
-
-  ]
+  plugins: []
 }
 if (isDev) {
   const devRules = [
@@ -85,7 +77,7 @@ if (isDev) {
   clientConfig.devServer = {
     host: '0.0.0.0',
     port: '8080',
-    contentBase: path.join(__dirname, '../public'),
+    contentBase: path.join(__dirname, '../dev-public'),
     inline: true,
     overlay: {
       error: true,
@@ -93,8 +85,14 @@ if (isDev) {
     historyApiFallback: true,
     hot: true,
   }
-  clientConfig.plugins.push(
-    new webpack.HotModuleReplacementPlugin()
+  clientConfig.plugins = clientConfig.plugins.concat(
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+        title: 'music',
+        filename: path.join(__dirname, '../dev-public/index.html'),
+        template: path.join(__dirname, '../dev-public/index.html'),
+        inject: true,
+      }),
   )
 }
 if (isProd) {
