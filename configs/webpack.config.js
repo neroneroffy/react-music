@@ -41,40 +41,25 @@ const config = {
         ],
         exclude: [ path.join(__dirname, '../node_modules') ]
       },
+      {
+        test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+        loader: require.resolve('url-loader'),
+        options: {
+          limit: 8000,
+          name: 'static/img/[name].[hash:8].[ext]',
+        },
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: 'static/fonts/[name].[hash:8].[ext]'
+        }
+      }
     ]
   },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     title: 'music',
-  //     filename: path.join(__dirname, '../build/index.html'),
-  //     template: path.join(__dirname, '../public/index.html'),
-  //     inject: true,
-  //   }),
-  // ]
+
 }
-/*
-if (isDev) {
-  config.devServer = {
-    host: '0.0.0.0',
-      port: '8080',
-      contentBase: path.join(__dirname, '../public'),
-      overlay: {
-      error: true,
-    },
-    historyApiFallback: {
-      index: path.join(__dirname, '../public/index.html'),
-    },
-    hot: true,
-  }
-  config.entry = {
-    app :[
-      "react-hot-loader/patch",
-      path.join(__dirname, '../src/client/index.tsx'),
-    ]
-  }
-  config.plugins.push(
-    new webpack.HotModuleReplacementPlugin()
-  )
-}
-*/
+
 module.exports = config

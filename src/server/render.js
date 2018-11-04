@@ -6,7 +6,6 @@ import App from '../containers/app'
 import store from '../store'
 
 const serverRender = req => {
-  console.log(req.path);
   const content = renderToString((
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
@@ -14,20 +13,21 @@ const serverRender = req => {
       </StaticRouter>
     </Provider>
     ))
+
   return `<html>
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
                 <title>音乐</title>
-                <link rel="stylesheet" href="/style.1.css">
-                <link rel="stylesheet" href="/style.2.css">
+                <link rel="stylesheet" href="static/css/main.css">
+                <link rel="stylesheet" href="static/css/vendors.css">
             </head>
             <body>
                 <div id="root">${content}</div>
             </body>
-            <script src="/vendors.js"></script>
-            <script src="/main.js"></script>
-            <script src="/manifest.client.js"></script>
+            <script src="static/js/vendors.js"></script>
+            <script src="static/js/main.js"></script>
+            <script src="static/js/manifest.client.js"></script>
           </html>`
 }
 

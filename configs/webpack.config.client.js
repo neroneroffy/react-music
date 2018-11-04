@@ -5,20 +5,22 @@ const baseConfig = require('./webpack.config')
 const theme = require('../package.json').theme
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = process.env.NODE_ENV === 'production'
 const clientConfig = {
   entry: path.join(__dirname, '../src/client/index.tsx'),
   output: {
     path: path.join(__dirname, '../public'),
-    filename: '[name].client.js',
-    chunkFilename: "[name].js",
+    filename: 'static/js/[name].client.js',
+    chunkFilename: "static/js/[name].js",
   },
   resolve: {
     extensions: [ '.ts', '.tsx', '.js', '.json' ]
   },
   module: {
-    rules: []
+    rules: [
+    ]
   },
   devtool: "#eval-source-map",
   plugins: []
@@ -72,6 +74,12 @@ if (isDev) {
     "react-hot-loader/patch",
     path.join(__dirname, '../src/client/index.tsx'),
   ]
+  clientConfig.output = {
+    path: path.join(__dirname, '../dev-public'),
+      filename: '[name].client.js',
+      chunkFilename: "[name].js",
+  },
+
   clientConfig.mode = 'development'
   clientConfig.module.rules = clientConfig.module.rules.concat(devRules)
   clientConfig.devServer = {
@@ -160,13 +168,19 @@ if (isProd) {
     }
   }
   clientConfig.plugins.push(
+    new CleanWebpackPlugin(['../public']),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "style.[id].css",
-      allChunks: true
-    })
-  )
+      filename: "static/css/[name].css",
+      // chunkFilename: "static/css/style.[id].css",
+      // allChunks: true
+    }),
+    // new HtmlWebpackPlugin({
+    //   title: 'music',
+    //   filename: path.join(__dirname, '../public/index.html'),
+    //   template: path.join(__dirname, '../dev-public/index.html'),
+    //   inject: true,
+    // }),
+
+)
 }
 module.exports = merge(clientConfig, baseConfig)

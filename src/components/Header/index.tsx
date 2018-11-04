@@ -13,7 +13,7 @@ class Header extends React.Component<HeaderProps> {
   render() {
     return (<div>
         <p>
-            <Link to='/'>首页</Link>
+            <Link to='/home'>首页</Link>
             <Link to='/test'>测sdadas</Link>
         </p>
     </div>)
