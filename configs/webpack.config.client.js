@@ -174,12 +174,12 @@ if (isProd) {
       // chunkFilename: "static/css/style.[id].css",
       // allChunks: true
     }),
-    // new HtmlWebpackPlugin({
-    //   title: 'music',
-    //   filename: path.join(__dirname, '../public/index.html'),
-    //   template: path.join(__dirname, '../dev-public/index.html'),
-    //   inject: true,
-    // }),
+    new HtmlWebpackPlugin({
+      title: 'music',
+      filename: path.join(__dirname, '../public/static/index.html'),
+      template: path.join(__dirname, '../dev-public/index.html'),
+      inject: true,
+    }),
 
 )
 }

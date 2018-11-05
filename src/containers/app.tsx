@@ -10,7 +10,6 @@ class App extends React.Component {
         return <div className={styles.app}>
             <Header menus={{}}/>
             <span className='icon-office'></span>
-            <Button type='primary'>测试按钮</Button>
             <Routes/>
         </div>
     }
