@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Home from './containers/Home/index'
 import Test from './containers/Test/test'
+import App from './containers/app'
 import { Route, Redirect } from 'react-router-dom'
 
 interface RoutesProps {
@@ -9,11 +10,11 @@ interface RoutesProps {
 class Routes extends React.Component<RoutesProps> {
     state = {
         routesList: [
-            // {
-            //     path: '/',
-            //     component: () => <Redirect to='/home'/>,
-            //     name: 'App',
-            // },
+            {
+                path: '/',
+                component: () => <Redirect to='/home'/>,
+                name: 'App',
+            },
             {
                 path: '/home',
                 component: Home,

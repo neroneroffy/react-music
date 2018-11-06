@@ -20,4 +20,8 @@ class Home extends React.Component<HomeProps> {
   }
 }
 
+Home.loadData = store => {
+    console.log(store)
+}
+
 export default Home
