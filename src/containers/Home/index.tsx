@@ -1,12 +1,17 @@
 import * as React from 'react'
 import { Button } from 'antd-mobile'
+import { connect } from 'react-redux'
+import { GET_HOME_DATA } from './store/Home.action'
 import pic from '../../static/img/timg.jpg'
 import styles from './style.less'
 interface HomeProps {
-  name: any
+    getHomeData: any
 }
 class Home extends React.Component<HomeProps> {
   componentDidMount() {
+      const { getHomeData } = this.props
+      getHomeData()
+      console.log(this.props)
     // do
   }
 
@@ -24,4 +29,17 @@ Home.loadData = store => {
     console.log(store)
 }
 
-export default Home
+const mapStateToProps = (state: object) => {
+    return {
+        home: state.home,
+    }
+}
+
+const mapDispatchToProps = (dispatch: any) => {
+    return {
+        getHomeData: () => dispatch({
+            type: GET_HOME_DATA,
+        }),
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
