@@ -1,9 +1,10 @@
+import { fork } from 'redux-saga/effects'
 import testSaga from '../containers/Test/store/index'
 import homeSaga from '../containers/Home/store/index'
 
 export default function* rootSaga() {
-  yield [
-    testSaga(),
-    homeSaga(),
+    yield [
+        testSaga(),
+        homeSaga(),
   ]
 }

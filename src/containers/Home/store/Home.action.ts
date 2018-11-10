@@ -14,3 +14,10 @@ export const getHomeFailure = () => {
         type: GET_HOME_DATA_FAILURE,
     }
 }
+
+export const getHomeDataAction = (dispatch: any) => {
+    console.log('服务端渲染调用')
+    return {
+        type: GET_HOME_DATA,
+    }
+}

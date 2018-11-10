@@ -12,6 +12,7 @@ export default function home(state = initialState, action: any) {
         case Actions.GET_HOME_DATA_FAILURE:
             return {
                 ...state,
+                homeData: 'failure',
             }
         default:
             return state
