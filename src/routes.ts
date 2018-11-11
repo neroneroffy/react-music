@@ -9,7 +9,6 @@ export default [
         path: '/',
         component: Home,
         exact: true,
-        loadData: Home.loadData,
     },
     {
         path: '/test',

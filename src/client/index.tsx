@@ -4,7 +4,7 @@ const root = document.getElementById('root')
 import {AppContainer} from 'react-hot-loader'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from 'react-router-dom'
-import store from '../store';
+import { createClientStore } from '../store';
 import App from '../containers/app'
 
 if (module.hot) {
@@ -12,7 +12,7 @@ if (module.hot) {
         const NextApp = require('../containers/app.tsx').default
         ReactDOM.render(
             <AppContainer>
-                <Provider store={store}>
+                <Provider store={createClientStore()}>
                     <BrowserRouter>
                         <NextApp/>
                     </BrowserRouter>
@@ -23,7 +23,7 @@ if (module.hot) {
 
 ReactDOM.render(
     <AppContainer>
-        <Provider store={store}>
+        <Provider store={createClientStore()}>
             <BrowserRouter>
                 <App/>
             </BrowserRouter>

@@ -9,8 +9,8 @@ interface HomeProps {
 }
 class Home extends React.Component<HomeProps> {
   componentDidMount() {
-      // const { getHomeDataAction } = this.props
-      // getHomeDataAction()
+      const { getHomeDataAction } = this.props
+      getHomeDataAction()
     // do
   }
 
@@ -29,10 +29,6 @@ class Home extends React.Component<HomeProps> {
         <img src={pic} alt=""/>
     </div>
   }
-}
-
-Home.loadData = () => {
-    getHomeDataAction()
 }
 
 const mapStateToProps = (state: object) => {

@@ -3,10 +3,9 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import App from '../containers/app'
-import store from '../store'
 import fs from 'fs'
 
-const serverRender = req => {
+const serverRender = (req, store) => {
   const content = renderToString((
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
