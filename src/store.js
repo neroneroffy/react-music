@@ -8,7 +8,8 @@ const middlewares = compose(
   applyMiddleware(sagaMiddleware),
   enhancer
 )
-const clientStore = createStore(rootReducers,middlewares)
+const defaultStore = window.context.state
+const clientStore = createStore(rootReducers, defaultStore, middlewares)
 sagaMiddleware.run(rootSaga)
 export const createClientStore = () => clientStore
 // export default store

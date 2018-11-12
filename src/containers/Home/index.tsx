@@ -9,14 +9,13 @@ interface HomeProps {
 }
 class Home extends React.Component<HomeProps> {
   componentDidMount() {
-      const { getHomeDataAction } = this.props
-      getHomeDataAction()
+      // const { getHomeDataAction } = this.props
+      // getHomeDataAction()
     // do
   }
 
   render() {
       const { results } = this.props.home
-
       return <div className={styles.home}>
         <Button type={'primary'}>按钮</Button>
           <div>

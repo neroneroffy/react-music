@@ -6,6 +6,11 @@ import App from '../containers/app'
 import fs from 'fs'
 
 const serverRender = (req, store) => {
+  const initialState = `<script >
+                    window.context = {
+                        state: ${JSON.stringify(store.getState())}
+                    }
+                </script>`
   const content = renderToString((
     <Provider store={store}>
       <StaticRouter location={req.path} context={{}}>
@@ -14,7 +19,7 @@ const serverRender = (req, store) => {
     </Provider>
     ))
   const template = fs.readFileSync(process.cwd() + '/public/static/index.html', 'utf8')
-  return template.replace('<!--app-->', content)
+  return template.replace('<!--app-->', content).replace('<!--INITIAL_STATE-->', initialState)
 }
 
 export default serverRender

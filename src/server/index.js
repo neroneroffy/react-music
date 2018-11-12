@@ -21,9 +21,9 @@ app.get("*", (req, res) => {
   // @Todo 会自动请求robots.txt文件，导致matchedRoutes 为undefined 暂时判断处理，日后补充
   if (matchedRoutes[0]) {
     sagaMiddleware.run(fetchHomeData).done.then(() => {
-      const state = store.getState();
+      res.send(serverRender(req, store))
     })
-    res.send(serverRender(req, store))
+
   }
 })
 
